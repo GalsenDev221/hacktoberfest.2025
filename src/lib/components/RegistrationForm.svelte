@@ -23,7 +23,7 @@
 		import Checkbox from './ui/Checkbox.svelte';
 </script>
 
-<div class="mx-auto max-w-2xl rounded-2xl border border-violet-500/20 p-8 md:p-12">
+<div class="mx-auto max-w-2xl rounded-2xl border border-violet-500/20 p-6 md:p-12">
 	<form class="space-y-6" on:submit={submit} novalidate aria-label="Registration form">
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			<div>

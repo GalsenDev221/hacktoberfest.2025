@@ -14,10 +14,10 @@
   }
 </script>
 
-<section class="py-20 bg-slate-800">
+<section class="py-12 md:py-20 bg-slate-800">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Frequently Asked <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400">Questions</span></h2>
+    <div class="text-center mb-8 md:mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">Frequently Asked <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400">Questions</span></h2>
     </div>
 
     <div class="space-y-4">

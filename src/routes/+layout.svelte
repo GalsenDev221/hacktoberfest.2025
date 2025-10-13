@@ -9,6 +9,7 @@
 	<meta charset="utf-8" />
 </svelte:head>
 
-<div class="min-h-screen bg-slate-900">
+<!-- Add top padding to account for the fixed nav (py on small screens, larger on md+) -->
+<div class="min-h-screen bg-slate-900 pt-16 md:pt-20">
 	<slot />
 </div>

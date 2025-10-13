@@ -28,8 +28,8 @@
         <a href="#sponsors" class="text-white hover:text-violet-300 transition-colors" role="menuitem">Sponsors</a>
       </div>
 
-      <div class="flex items-center gap-3">
-  <Button on:click={() => dispatch('openRegister')} className="px-6 py-2">Register</Button>
+    <div class="flex items-center gap-3">
+  <Button on:click={() => dispatch('openRegister')} className="px-4 py-1 text-sm md:px-6 md:py-2">Register</Button>
           <button class="md:hidden text-gray-200" aria-label="Toggle menu" aria-expanded={open} on:click={() => (open = !open)}>
             {#if open}
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>

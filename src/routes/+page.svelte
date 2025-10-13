@@ -11,7 +11,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import PartnerForm from '$lib/components/PartnerForm.svelte';
 
-	const targetDate = new Date('2025-10-01T00:00:00').getTime();
+	const targetDate = new Date('2025-10-25T00:00:00').getTime();
 
 	const talks = [
 		{
@@ -90,7 +90,7 @@
 
 <Nav siteName="GalsenDev" />
 
-<main class="container mx-auto mt-16 flex flex-col gap-20 pt-24">
+<main class="container mx-auto lg:mt-16 flex flex-col gap-20 md:pt-24">
 	<Hero title="Hacktoberfest" year="2025" />
 	<Countdown target={targetDate} />
 
@@ -109,7 +109,17 @@
 				</p>
 			</div>
 
-			<RegistrationForm on:submit={(e) => console.log('submitted ', e.detail)} />
+			<div class="flex flex-col items-center">
+
+				<a
+				href="https://forms.gle/your-registration-form-link"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-block rounded-lg bg-purple-600 px-8 py-4 text-xl font-semibold text-white shadow-lg transition hover:bg-purple-700"
+				>
+				Register Now
+			</a>
+		</div>
 		</div>
 	</section>
 

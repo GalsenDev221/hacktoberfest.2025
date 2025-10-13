@@ -30,22 +30,22 @@
   });
 </script>
 
-<div class=" text-center flex flex-col gap-12 py-12">
-  <h2 class="text-3xl font-bold text-white">Countdown to Hacktoberfest</h2>
-  <div class="flex   justify-center gap-4 md:gap-8">
+<div class=" text-center flex flex-col gap-8 py-8 md:py-12">
+  <h2 class="text-2xl md:text-3xl font-bold text-white">Countdown to Hacktoberfest</h2>
+    <div class="flex flex-wrap justify-center gap-4 md:gap-8">
     <div class="flex flex-col gap-2 items-center justify-center backdrop-blur-md border border-violet-500/20 rounded-lg p-4 md:p-6 min-w-[80px] md:w-full ">
       <div class="text-3xl md:text-5xl font-bold text-violet-400">{days}</div>
       <div class="text-gray-400 text-sm md:text-base">Days</div>
     </div>
-    <div class="flex flex-col gap-2 items-center justify-center backdrop-blur-md border border-violet-500/20 rounded-lg p-4 md:p-6 min-w-[80px] md:w-full ">
+      <div class="flex flex-col gap-2 items-center justify-center backdrop-blur-md border border-violet-500/20 rounded-lg p-4 md:p-6 min-w-[72px] sm:min-w-[80px] md:w-auto">
       <div class="text-3xl md:text-5xl font-bold text-violet-400">{hours}</div>
       <div class="text-gray-400 text-sm md:text-base">Hours</div>
     </div>
-    <div class="flex flex-col gap-2 items-center justify-center backdrop-blur-md border border-violet-500/20 rounded-lg p-4 md:p-6 min-w-[80px] md:w-full ">
+      <div class="flex flex-col gap-2 items-center justify-center backdrop-blur-md border border-violet-500/20 rounded-lg p-4 md:p-6 min-w-[72px] sm:min-w-[80px] md:w-auto">
       <div class="text-3xl md:text-5xl font-bold text-violet-400">{minutes}</div>
       <div class="text-gray-400 text-sm md:text-base">Minutes</div>
     </div>
-    <div class="flex flex-col gap-2 items-center justify-center backdrop-blur-md border border-violet-500/20 rounded-lg p-4 md:p-6 min-w-[80px] md:w-full ">
+      <div class="flex flex-col gap-2 items-center justify-center backdrop-blur-md border border-violet-500/20 rounded-lg p-4 md:p-6 min-w-[72px] sm:min-w-[80px] md:w-auto">
       <div class="text-3xl md:text-5xl font-bold text-violet-400">{seconds}</div>
       <div class="text-gray-400 text-sm md:text-base">Seconds</div>
     </div>

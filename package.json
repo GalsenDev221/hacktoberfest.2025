@@ -48,5 +48,9 @@
 		"onlyBuiltDependencies": [
 			"esbuild"
 		]
+	},
+	"dependencies": {
+		"@types/nodemailer": "^7.0.2",
+		"nodemailer": "^7.0.9"
 	}
 }

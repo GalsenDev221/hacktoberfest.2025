@@ -19,34 +19,64 @@
 
   let submitted = false;
   let error: string | null = null;
+  let isLoading = false;
 
-  const submit = (e: Event) => {
+  const submit = async (e: Event) => {
     e.preventDefault();
     error = null;
+    isLoading = true;
+
     if (!organization.trim() || !contactName.trim() || !email.trim()) {
       error = 'Please provide organization, contact name and email.';
+      isLoading = false;
       return;
     }
     if (!agreed) {
       error = 'Please accept the partnership terms.';
+      isLoading = false;
       return;
     }
 
-    const payload = { organization, contactName, email, website, tier, message };
+    const payload = { 
+      organization: organization.trim(), 
+      contactName: contactName.trim(), 
+      email: email.trim(), 
+      website: website.trim() || undefined, 
+      tier, 
+      message: message.trim() || undefined 
+    };
 
-    // Dispatch event for parent to handle or future API integration
-    dispatch('partnerRequest', payload);
+    try {
+      const response = await fetch('/api/partner', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
 
-    // For now show a simple success state
-    submitted = true;
+      const result = await response.json();
+
+      if (response.ok) {
+        dispatch('partnerRequest', payload);
+        submitted = true;
+      } else {
+        error = result.error || 'Failed to send partnership request. Please try again.';
+      }
+    } catch (err) {
+      console.error('Error submitting partnership request:', err);
+      error = 'Network error. Please check your connection and try again.';
+    } finally {
+      isLoading = false;
+    }
   };
 </script>
 
-<section class="bg-slate-800 py-20" aria-labelledby="partner-form-title">
+<section class="bg-slate-800 py-12 md:py-20" aria-labelledby="partner-form-title">
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    <div class="mb-8 text-center">
-      <h2 id="partner-form-title" class="text-4xl font-bold text-white md:text-5xl mb-4">Become a <span class="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">Partner</span></h2>
-      <p class="mx-auto max-w-2xl text-xl text-gray-300">Partner with us to support the open source community and reach thousands of passionate developers.</p>
+    <div class="mb-6 text-center">
+  <h2 id="partner-form-title" class="text-3xl md:text-4xl font-bold text-white mb-3">Become a <span class="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">Partner</span></h2>
+  <p class="mx-auto max-w-2xl text-base md:text-xl text-gray-300">Partner with us to support the open source community and reach thousands of passionate developers.</p>
     </div>
 
     {#if submitted}
@@ -97,8 +127,10 @@
         {/if}
 
         <div class="mt-6 flex items-center gap-4">
-          <Button type="submit">Send request</Button>
-          <Button type="button" variant="ghost" className="px-4 py-2" on:click={() => { organization=''; contactName=''; email=''; website=''; message=''; agreed=false; error=null; }}>Reset</Button>
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? 'Sending...' : 'Send request'}
+          </Button>
+          <Button type="button" variant="ghost" className="px-4 py-2" disabled={isLoading} on:click={() => { organization=''; contactName=''; email=''; website=''; message=''; agreed=false; error=null; }}>Reset</Button>
         </div>
       </form>
     {/if}
