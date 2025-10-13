@@ -112,7 +112,7 @@
 			<div class="flex flex-col items-center">
 
 				<a
-				href="https://forms.gle/your-registration-form-link"
+				href="https://luma.com/3icfjnbc"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="inline-block rounded-lg bg-purple-600 px-8 py-4 text-xl font-semibold text-white shadow-lg transition hover:bg-purple-700"
