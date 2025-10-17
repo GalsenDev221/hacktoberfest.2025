@@ -8,13 +8,12 @@ interface PartnershipRequest {
 	contactName: string;
 	email: string;
 	website?: string;
-	tier: string;
 	message?: string;
 }
 
 export const POST: RequestHandler = async ({ request }) => {
 	if (!env.EMAIL_USER || !env.EMAIL_PASS || !env.EMAIL_HOST || !env.EMAIL_PORT) {
-		console.warn('⚠️ Some email environment variables are missing.');
+		console.warn('⚠️ Certaines variables d’environnement email sont manquantes.');
 	}
 
 	try {
@@ -23,7 +22,9 @@ export const POST: RequestHandler = async ({ request }) => {
 		// Validate required fields
 		if (!data.organization || !data.contactName || !data.email) {
 			return json(
-				{ error: 'Missing required fields: organization, contactName, and email are required' },
+				{
+					error: 'Champs obligatoires manquants : organization, nom du contact et email sont requis'
+				},
 				{ status: 400 }
 			);
 		}
@@ -31,7 +32,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		// Email validation
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(data.email)) {
-			return json({ error: 'Invalid email format' }, { status: 400 });
+			return json({ error: 'Format d’email invalide' }, { status: 400 });
 		}
 
 		// Create transporter. If credentials are missing or malformed, fall back to a test account (Ethereal)
@@ -47,7 +48,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 		if (missingCreds.length) {
 			console.warn(
-				'Email environment variables appear missing or malformed:',
+				'Certaines variables d’environnement email semblent manquantes ou incorrectes :',
 				missingCreds.join(', ')
 			);
 		}
@@ -68,12 +69,11 @@ export const POST: RequestHandler = async ({ request }) => {
 			try {
 				await transporter.verify();
 			} catch (err) {
-				console.error('Email transporter verification failed:', err);
-				// Provide a helpful error to the client (no secrets)
+				console.error('Échec de la vérification du service email :', err);
 				return json(
 					{
 						error:
-							'Email service verification failed. Please check EMAIL_HOST, EMAIL_PORT, EMAIL_USER and EMAIL_PASS in your .env (no quotes, trimmed). If you intended to use test mode, unset EMAIL_USER/EMAIL_PASS.'
+							'La vérification du service email a échoué. Veuillez vérifier EMAIL_HOST, EMAIL_PORT, EMAIL_USER et EMAIL_PASS dans votre .env (sans guillemets, bien renseignés). Si vous souhaitez utiliser le mode test, retirez EMAIL_USER/EMAIL_PASS.'
 					},
 					{ status: 500 }
 				);
@@ -93,36 +93,33 @@ export const POST: RequestHandler = async ({ request }) => {
 					pass: testAccount.pass
 				}
 			} as any);
-			// Use RECIPIENT_EMAIL if set, otherwise the test account user so developer can view the message
 			notificationRecipient = env.RECIPIENT_EMAIL || testAccount.user;
 		}
 
 		// Email content
-		const emailSubject = `New Partnership Request from ${data.organization}`;
+		const emailSubject = `Nouvelle demande de partenariat de ${data.organization}`;
 		const emailHtml = `
-      <h2>New Partnership Request</h2>
-      <p><strong>Organization:</strong> ${data.organization}</p>
-      <p><strong>Contact Name:</strong> ${data.contactName}</p>
-      <p><strong>Email:</strong> ${data.email}</p>
-      <p><strong>Website:</strong> ${data.website || 'Not provided'}</p>
-      <p><strong>Partnership Tier:</strong> ${data.tier}</p>
-      <p><strong>Message:</strong></p>
-      <p>${data.message || 'No message provided'}</p>
+      <h2>Nouvelle demande de partenariat</h2>
+      <p><strong>Organisation :</strong> ${data.organization}</p>
+      <p><strong>Nom du contact :</strong> ${data.contactName}</p>
+      <p><strong>Email :</strong> ${data.email}</p>
+      <p><strong>Site web :</strong> ${data.website || 'Non renseigné'}</p>
+      <p><strong>Message :</strong></p>
+      <p>${data.message || 'Aucun message fourni'}</p>
       <hr>
-      <p><em>This request was submitted through the Hacktoberfest 2025 website partnership form.</em></p>
+      <p><em>Cette demande a été soumise via le formulaire de partenariat du site Hacktoberfest 2025 de la communauté Galsen DEV.</em></p>
     `;
 
 		const emailText = `
-New Partnership Request
+Nouvelle demande de partenariat
 
-Organization: ${data.organization}
-Contact Name: ${data.contactName}
-Email: ${data.email}
-Website: ${data.website || 'Not provided'}
-Partnership Tier: ${data.tier}
-Message: ${data.message || 'No message provided'}
+Organisation : ${data.organization}
+Nom du contact : ${data.contactName}
+Email : ${data.email}
+Site web : ${data.website || 'Non renseigné'}
+Message : ${data.message || 'Aucun message fourni'}
 
-This request was submitted through the Hacktoberfest 2025 website partnership form.
+Cette demande a été soumise via le formulaire de partenariat du site Hacktoberfest 2025 de la communauté Galsen DEV.
     `;
 
 		// Send email
@@ -138,39 +135,39 @@ This request was submitted through the Hacktoberfest 2025 website partnership fo
 		const infoConfirmation = await transporter.sendMail({
 			from: env.EMAIL_USER || 'no-reply@example.com',
 			to: data.email,
-			subject: 'Partnership Request Received - Hacktoberfest 2025',
-			text: `Hi ${data.contactName},
+			subject: 'Demande de partenariat reçue - Hacktoberfest 2025',
+			text: `Bonjour ${data.contactName},
 
-Thank you for your interest in partnering with Hacktoberfest 2025!
+Merci pour votre intérêt à devenir partenaire pour le Hacktoberfest 2025 de la communauté Galsen DEV !
 
-We have received your partnership request for ${data.organization} and will review it shortly. Our team will get back to you within 2-3 business days.
+Nous avons bien reçu votre demande de partenariat pour ${data.organization} et l’examinerons prochainement. Notre équipe vous répondra sous peu.
 
-Partnership Details:
-- Organization: ${data.organization}
-- Partnership Tier: ${data.tier}
-- Website: ${data.website || 'Not provided'}
+Détails du partenariat :
+- Organisation : ${data.organization}
+- Site web : ${data.website || 'Non renseigné'}
+- Message : ${data.message || 'Aucun message fourni'}
 
-We appreciate your support of the open source community!
+Merci pour votre soutien à la communauté !
 
-Best regards,
-The Hacktoberfest 2025 Team`,
+Cordialement,
+L’équipe de Galsen DEV`,
 			html: `
-        <h2>Partnership Request Received</h2>
-        <p>Hi ${data.contactName},</p>
-        <p>Thank you for your interest in partnering with Hacktoberfest 2025!</p>
-        <p>We have received your partnership request for <strong>${data.organization}</strong> and will review it shortly. Our team will get back to you within 2-3 business days.</p>
+        <h2>Demande de partenariat reçue</h2>
+        <p>Bonjour ${data.contactName},</p>
+        <p>Merci pour votre intérêt à devenir partenaire pour le Hacktoberfest 2025 de la communauté Galsen DEV !</p>
+        <p>Nous avons bien reçu votre demande de partenariat pour <strong>${data.organization}</strong> et l’examinerons prochainement. Notre équipe vous répondra sous peu.</p>
         
-        <h3>Partnership Details:</h3>
+        <h3>Détails du partenariat :</h3>
         <ul>
-          <li><strong>Organization:</strong> ${data.organization}</li>
-          <li><strong>Partnership Tier:</strong> ${data.tier}</li>
-          <li><strong>Website:</strong> ${data.website || 'Not provided'}</li>
+          <li><strong>Organisation :</strong> ${data.organization}</li>
+          <li><strong>Site web :</strong> ${data.website || 'Non renseigné'}</li>
+					<li><strong>Message :</strong> ${data.message || 'Aucun message fourni'}</li>
         </ul>
         
-        <p>We appreciate your support of the open source community!</p>
+        <p>Merci pour votre soutien à la communauté !</p>
         
-        <p>Best regards,<br>
-        The Hacktoberfest 2025 Team</p>
+        <p>Cordialement,<br>
+        L’équipe de Galsen DEV</p>
       `
 		});
 
@@ -180,17 +177,17 @@ The Hacktoberfest 2025 Team`,
 			const previewConfirmation = (nodemailer.getTestMessageUrl as any)(infoConfirmation) || null;
 			return json({
 				success: true,
-				message: 'Partnership request sent (test account).',
+				message: 'Demande de partenariat envoyée (compte de test).',
 				previewNotification,
 				previewConfirmation
 			});
 		}
 
-		return json({ success: true, message: 'Partnership request sent successfully!' });
+		return json({ success: true, message: 'Demande de partenariat envoyée avec succès !' });
 	} catch (error) {
-		console.error('Error processing partnership request:', error);
+		console.error('Erreur lors du traitement de la demande de partenariat :', error);
 		return json(
-			{ error: 'Failed to process partnership request. Please try again later.' },
+			{ error: 'Échec du traitement de la demande de partenariat. Veuillez réessayer plus tard.' },
 			{ status: 500 }
 		);
 	}
@@ -201,7 +198,6 @@ export const GET: RequestHandler = async () => {
 	// Load dotenv in dev to ensure process.env is populated when using preview
 	if (process.env.NODE_ENV !== 'production') {
 		try {
-			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			require('dotenv').config();
 		} catch (e) {
 			// ignore
