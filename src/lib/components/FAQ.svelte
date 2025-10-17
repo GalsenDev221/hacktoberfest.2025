@@ -1,6 +1,5 @@
 <script lang="ts">
 	// using native button for accordion toggles to ensure reliable event handling
-
 	const faqs = [
 		{
 			question: 'Qu’est-ce que Hacktoberfest ?',

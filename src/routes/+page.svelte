@@ -1,10 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
 	import Nav from '$lib/components/Nav.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Countdown from '$lib/components/Countdown.svelte';
-	// import RegistrationForm from '$lib/components/RegistrationForm.svelte';
 	import Talks from '$lib/components/Talks.svelte';
 	import FAQ from '$lib/components/FAQ.svelte';
 	import Partners from '$lib/components/Partners.svelte';
@@ -56,7 +53,7 @@
 	/>
 </svelte:head>
 
-<Nav siteName="Hacktoberfest 2025" />
+<Nav siteName="2025" />
 
 <main class="container mx-auto flex flex-col gap-20 md:pt-24 lg:mt-16">
 	<Hero title="Hacktoberfest" year="2025" />
@@ -94,7 +91,6 @@
 	<FAQ />
 	<Partners {partners} />
 	<PartnerForm />
-	<!-- on:partnerRequest={(e) => console.log('Partner request:', e.detail)} -->
 
 	<Footer />
 </main>
