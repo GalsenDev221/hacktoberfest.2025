@@ -1,44 +1,96 @@
 <script lang="ts">
-	import logo from '$lib/assets/images/galsendev221_logo.jpeg';
-
+	import logo from '$lib/assets/images/hf25.png';
 </script>
 
-<footer class="bg-slate-900 border-t border-violet-500/20 py-12">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-4 gap-8">
-      <div class="md:col-span-2">
-        <div class="flex items-center space-x-2 mb-4">
-          <img class="w-8 h-8 rounded-lg" src={logo} alt="logo">
-          <span class="text-white font-bold text-xl">GalsenDev</span>
-        </div>
-        <p class="text-gray-400 mb-4 max-w-md">Building a vibrant community of developers in Senegal and beyond. Join us for Hacktoberfest 205 and contribute to open source!</p>
-        <div class="flex space-x-4">
-          <p class="w-10 h-10 bg-violet-500/20 rounded-lg flex items-center justify-center text-violet-400 hover:bg-violet-500/30 transition-colors" aria-label="Twitter">🐦</p>
-          <p class="w-10 h-10 bg-violet-500/20 rounded-lg flex items-center justify-center text-violet-400 hover:bg-violet-500/30 transition-colors" aria-label="GitHub">🐙</p>
-          <p class="w-10 h-10 bg-violet-500/20 rounded-lg flex items-center justify-center text-violet-400 hover:bg-violet-500/30 transition-colors" aria-label="Discord">💬</p>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-white font-semibold mb-4">Quick Links</h3>
-        <ul class="space-y-2 text-gray-400">
-          <li><a href="#home" class="hover:text-violet-400 transition-colors">Home</a></li>
-          <li><a href="#about" class="hover:text-violet-400 transition-colors">About</a></li>
-          <li><a href="#events" class="hover:text-violet-400 transition-colors">Events</a></li>
-          <li><a href="#sponsors" class="hover:text-violet-400 transition-colors">Partners</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-white font-semibold mb-4">Resources</h3>
-        <ul class="space-y-2 text-gray-400">
-          <li><a href="/" class="hover:text-violet-400 transition-colors">Getting Started</a></li>
-          <li><a href="/" class="hover:text-violet-400 transition-colors">Projects</a></li>
-          <li><a href="/" class="hover:text-violet-400 transition-colors">Guidelines</a></li>
-          <li><a href="/" class="hover:text-violet-400 transition-colors">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="border-t border-violet-500/20 mt-12 pt-8 text-center text-gray-400">
-      <p>&copy; 2025 GalsenDev. All rights reserved. Made with ❤️ for the open source community.</p>
-    </div>
-  </div>
+<footer class="border-t border-violet-500/20 bg-slate-900 py-12">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="grid gap-8 md:grid-cols-4">
+			<div class="md:col-span-2">
+				<div class="mb-4 flex items-center space-x-2">
+					<img class="h-8 w-16 rounded-lg" src={logo} alt="logo" />
+					<span class="text-xl font-bold text-white">Hacktoberfest 2025</span>
+				</div>
+				<p class="mb-4 max-w-md text-gray-400">
+					Une communauté dynamique de développeurs au Sénégal et au-delà. Rejoignez-nous pour le
+					Hacktoberfest 2025 🎊
+				</p>
+				<div class="flex space-x-4">
+					<a
+						class="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500/20 text-violet-400 transition-colors hover:bg-violet-500/30"
+						aria-label="X (Twitter)"
+						href="https://x.com/galsendev"
+						target="_blank"
+					>
+						🐦
+					</a>
+					<a
+						class="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500/20 text-violet-400 transition-colors hover:bg-violet-500/30"
+						aria-label="GitHub"
+						href="https://github.com/GalsenDev221"
+						target="_blank"
+					>
+						🐙
+					</a>
+					<a
+						class="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500/20 text-violet-400 transition-colors hover:bg-violet-500/30"
+						aria-label="Discord"
+						href="https://discord.gg/CKZcKqf"
+						target="_blank"
+					>
+						💬
+					</a>
+				</div>
+			</div>
+			<div>
+				<h3 class="mb-4 font-semibold text-white">Liens rapides</h3>
+				<ul class="space-y-2 text-gray-400">
+					<li>
+						<a
+							href="https://luma.com/3icfjnbc"
+							target="_blank"
+							class="transition-colors hover:text-violet-400">S'inscrire</a
+						>
+					</li>
+					<li><a href="#about" class="transition-colors hover:text-violet-400">A propos</a></li>
+					<li><a href="#program" class="transition-colors hover:text-violet-400">Programme</a></li>
+				</ul>
+			</div>
+			<div>
+				<h3 class="mb-4 font-semibold text-white">Ressources</h3>
+				<ul class="space-y-2 text-gray-400">
+					<li>
+						<a
+							href="https://hacktoberfest.com"
+							target="_blank"
+							class="transition-colors hover:text-violet-400">Hacktoberfest 2025</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://hacktoberfest.com/participation"
+							target="_blank"
+							class="transition-colors hover:text-violet-400">Guidelines</a
+						>
+					</li>
+					<li>
+						<a
+							href="mailto:galsendev221@gmail.com"
+							target="_blank"
+							class="transition-colors hover:text-violet-400">Contact</a
+						>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="mt-12 border-t border-violet-500/20 pt-8 text-center text-gray-400">
+			<p>
+				&copy; 2025 <a
+					class="underline"
+					href="https://galsen.dev"
+					target="_blank"
+					rel="noopener noreferrer">Galsen DEV</a
+				>. Tous droits réservés. Réalisé avec ❤️ pour la communauté open source.
+			</p>
+		</div>
+	</div>
 </footer>
