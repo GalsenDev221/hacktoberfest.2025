@@ -15,7 +15,7 @@
 		{
 			question: 'Quels types d’événements auront lieu ?',
 			answer:
-				'Nous organiserons des des talks, des panels, des sessions de réseautage et des séances de codage collaboratif tout au long du mois.'
+				'Nous organiserons des talks, des panels, des sessions de réseautage et des séances de codage collaboratif tout au long du mois.'
 		}
 	];
 
