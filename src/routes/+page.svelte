@@ -4,7 +4,7 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Countdown from '$lib/components/Countdown.svelte';
-	import RegistrationForm from '$lib/components/RegistrationForm.svelte';
+	// import RegistrationForm from '$lib/components/RegistrationForm.svelte';
 	import Talks from '$lib/components/Talks.svelte';
 	import FAQ from '$lib/components/FAQ.svelte';
 	import Partners from '$lib/components/Partners.svelte';
@@ -20,7 +20,7 @@
 				'Comprendre l’esprit du Hacktoberfest et apprendre à contribuer à un projet open source de manière simple et efficace.',
 			date: 'October 18, 2025',
 			time: '16:00 GMT',
-			image: 'src/lib/assets/speakers/@daoodaba975.png',
+			image: 'speakers/@daoodaba975.png',
 			name: 'Daouda BA',
 			bio: 'Développeur Full Stack, Lead @ Galsen DEV & Open Source Enthusiast.'
 		},
@@ -30,7 +30,7 @@
 				'Comprendre l’esprit du Hacktoberfest et apprendre à contribuer à un projet open source de manière simple et efficace.',
 			date: 'October 19, 2025',
 			time: '15:00 GMT',
-			image: 'src/lib/assets/speakers/@bakemono.png',
+			image: 'speakers/@bakemono.png',
 			name: 'Mouhamadou Moustapha DIAGNE',
 			bio: 'Développeur Full Stack & Tech Manager @ Galsen DEV.'
 		}
@@ -39,11 +39,11 @@
 	const partners = [
 		{
 			name: 'JetBrains',
-			logo: 'src/lib/assets/partners/jetbrains.png'
+			logo: 'partners/jetbrains.png'
 		},
 		{
 			name: 'Université Cheikh-Anta-Diop',
-			logo: 'src/lib/assets/partners/ucad.png'
+			logo: 'partners/ucad.png'
 		}
 	];
 </script>
