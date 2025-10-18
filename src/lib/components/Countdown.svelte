@@ -34,7 +34,7 @@
 </script>
 
 <div class=" flex flex-col gap-8 py-8 text-center md:py-12">
-	<h2 class="text-2xl font-bold text-white md:text-3xl">Compte à rebours avant le jour-j ⏳</h2>
+	<h2 class="text-2xl font-bold text-white md:text-3xl">La grande fête arrive dans…</h2>
 	<div class="flex flex-wrap justify-center gap-4 md:gap-8">
 		<div
 			class="flex min-w-[72px] flex-col items-center justify-center gap-2 rounded-lg border border-violet-500/20 p-4 backdrop-blur-md md:w-auto md:p-6"
